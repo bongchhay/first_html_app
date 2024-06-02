@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+  /* Add some basic styling to make it look better */
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #calculator {
+    margin: 50px auto;
+    width: 250px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+<center><h1>កាស្យូសម័យថ្មី</h1></center>
+<div id="calculator">
+  <input type="text" id="display" disabled>
+  <br>
+  <button onclick="appendNumber('7')">7</button>
+  <button onclick="appendNumber('8')">8</button>
+  <button onclick="appendNumber('9')">9</button>
+  
+  <!-- <br> -->
+  <button onclick="appendNumber('4')">4</button>
+  <button onclick="appendNumber('5')">5</button>
+  <button onclick="appendNumber('6')">6</button>
+  
+  <!-- <br> -->
+  <button onclick="appendNumber('1')">1</button>
+  <button onclick="appendNumber('2')">2</button>
+  <button onclick="appendNumber('3')">3</button>
+  
+  <!-- <br> -->
+  <button onclick="appendNumber('0')">0</button>
+  <button onclick="clearDisplay()">C</button>
+  <button onclick="appendOperator('*')">*</button>
+  <button onclick="appendOperator('-')">-</button>
+  <button onclick="appendOperator('+')">+</button>
+  <button onclick="appendOperator('/')">/</button>
+  <button onclick="calculate()">=</button>
+</div>
+
+<script>
+  let display = document.getElementById('display');
+  let currentExpression = '';
+
+  function appendNumber(number) {
+    currentExpression += number;
+    display.value = currentExpression;
+  }
+
+  function appendOperator(operator) {
+    currentExpression += operator;
+    display.value = currentExpression;
+  }
+
+  function calculate() {
+    try {
+      let result = eval(currentExpression);
+      display.value = result;
+      currentExpression = '';
+    } catch(error) {
+      display.value = 'Error';
+      currentExpression = '';
+    }
+  }
+
+  function clearDisplay() {
+    display.value = '';
+    currentExpression = '';
+  }
+</script>
+
+</body>
+</html>
